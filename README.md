@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+This app using Rails 5.0.2 and ruby 2.2.3
+We need to put your citymapper_key in the .env file (rename .env.prod by .env)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Goal of this app
+Use Citymapper API to get the travel time between two addresses 
