@@ -7,4 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
+      - if !flash[:notice].blank?
+        .alert.alert-info
+          = flash[:notice]
       = yield

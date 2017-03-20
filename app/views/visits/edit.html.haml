@@ -1,0 +1,10 @@
+.panel-group
+  .panel.panel-primary
+    .panel-heading
+      Edit Visit #
+      = @visit.id
+    .panel-body
+      = simple_form_for ([@itinerary, @visit]) do |f|
+        = f.input :address, label: 'Address:'
+        = f.input :duration, as: :float, label: 'Duration:'
+        = f.submit

@@ -1,0 +1,43 @@
+%h3 
+  Itinerary: 
+  = @itinerary.id
+%b Start time:
+= @itinerary.start_time
+%b from:
+Barbican office
+
+%hr
+
+- @visits.each do |visit|
+  .panel-group
+    .panel.panel-primary
+      .panel-heading
+        Visit #
+        = visit.id
+      .panel-body
+        %b
+          Address:
+        = visit.address
+        %b
+          Duration (in minutes):
+        = visit.duration
+        %b
+          Arrival time:
+        = visit.arrival_time
+      .panel-footer
+        %b
+          =link_to "Edit", edit_itinerary_visit_path(@itinerary, visit), class: "btn btn-info"
+        %b
+          =link_to "Remove", itinerary_visit_path(@itinerary, visit), method: :delete, class: "btn btn-primary"
+
+%hr
+
+.panel-group
+  .panel.panel-primary
+    .panel-heading
+      New Visit
+    .panel-body
+      = simple_form_for ([:itinerary, @visit]) do |f|
+        = f.input :address, label: 'Address:'
+        = f.input :duration, as: :float, label: 'Duration:'
+        = f.submit

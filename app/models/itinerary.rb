@@ -1,5 +1,8 @@
 class Itinerary < ApplicationRecord
-  validates_presence_of :destination_latitude, :destination_longitude, :start_time
+  has_many :visits, dependent: :destroy
+    
+  validates_presence_of :start_time
+
 
   def travel_time
     TravelTime.new(destination_coord).duration
