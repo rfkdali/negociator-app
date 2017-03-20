@@ -18,8 +18,12 @@ Bundler.require(*Rails.groups)
 
 module NegociatorTt
   class Application < Rails::Application
-    config.generators.stylesheets = false
-    config.generators.javascripts = false
-    config.generators.helper = false
+    config.generators do |g|
+      g.skip_routes  true
+      g.stylesheets = false
+      g.javascripts = false
+      g.view_specs = false
+      g.helper = false
+    end
   end
 end

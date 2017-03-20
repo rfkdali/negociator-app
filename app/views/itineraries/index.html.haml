@@ -1,0 +1,6 @@
+%h1 Itineraries
+
+= link_to 'New Itinerary', new_itinerary_path
+
+- @itineraries.each do |itinerary|
+  = itinerary.start_time
