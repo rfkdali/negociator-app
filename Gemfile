@@ -27,18 +27,18 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 gem 'httparty'
 
+gem 'bootstrap-sass'
+gem 'haml-rails'
+gem 'simple_form'
+
+
 group :test do
-  gem 'shoulda-matchers'  
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development, :test do
@@ -46,6 +46,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'ffaker'
   gem 'dotenv-rails'
 end
 
