@@ -9,7 +9,7 @@ class Itinerary < ApplicationRecord
   end
 
   def arrival_time
-    self.start_time + get_travel_time.minutes
+    self.start_time + travel_time.minutes
   end
 
   private
