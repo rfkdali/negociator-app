@@ -16,18 +16,20 @@ ActiveRecord::Schema.define(version: 20170320103944) do
   enable_extension "plpgsql"
 
   create_table "itineraries", force: :cascade do |t|
-    t.float    "origin_latitude"
-    t.float    "origin_longitude"
-    t.float    "destination_latitude"
-    t.float    "destination_longitude"
+    t.string   "origin_address"
+    t.string   "last_visit_address"
     t.datetime "start_time"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "arrival_time"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "visits", force: :cascade do |t|
     t.float    "duration"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "address"
+    t.float    "travel_time"
     t.datetime "arrival_time"
     t.integer  "itinerary_id"
     t.datetime "created_at",   null: false

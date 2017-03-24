@@ -20,4 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  itinerary:
+    office_address: "6-8 Long Ln, London EC1A 9HF, UK"

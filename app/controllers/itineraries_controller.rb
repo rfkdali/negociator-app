@@ -11,15 +11,28 @@ class ItinerariesController < ApplicationController
     @itinerary = Itinerary.new(itinerary_params)
 
     if @itinerary.save
-      redirect_to new_itinerary_visit_path(@itinerary), notice: 'ok'
+      redirect_to new_itinerary_visit_path(@itinerary)
+      flash[:notice] = "Itinerary has been successfuly created"
     else
-      flash[:error] = 'Itinerary has not been created'
-      redirect_to new_itinerary_path, notice: 'failure'
+      redirect_to new_itinerary_path
+      flash[:alert] = "Itinerary has not been created"
     end
   end
 
   def show
     @itinerary = Itinerary.find(params[:id])
+  end
+
+  def destroy
+    @itinerary = Itinerary.find(params[:id])
+
+    if @itinerary.destroy
+      redirect_to itineraries_path
+      flash[:notice] = "Itinerary has been successfuly destroyed"
+    else
+      redirect_to itineraries_path
+      flash[:alert] = "Itinerary has been successfuly destroyed"
+    end
   end
 
   private

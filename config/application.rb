@@ -18,6 +18,9 @@ Bundler.require(*Rails.groups)
 
 module NegociatorTt
   class Application < Rails::Application
+    config.eager_load_paths += Dir["#{config.root}/app/services/"]
+    config.exceptions_app = self.routes
+
     config.generators do |g|
       g.skip_routes  true
       g.stylesheets = false

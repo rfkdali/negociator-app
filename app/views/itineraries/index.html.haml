@@ -1,6 +1,36 @@
 %h1 Itineraries
 
-= link_to 'New Itinerary', new_itinerary_path
+= link_to 'New Itinerary', new_itinerary_path, class: "btn btn-primary"
 
-- @itineraries.each do |itinerary|
-  = itinerary.start_time
+%hr
+
+- if @itineraries
+  - @itineraries.each do |itinerary|
+    
+    .row
+      .col-md-5
+        .panel.panel-primary
+          .panel-body
+            %ul
+              %li
+                %b From:
+                = t('itinerary.office_address')
+              %li
+                %b Start time:
+                = itinerary.start_time.strftime("%F at %H:%M%P")
+              - unless itinerary.has_no_visits?
+                %li
+                  %b To:
+                  = itinerary.visits.last.address
+                %li
+                  %b Arrival Time:
+                  = itinerary.arrival_time.strftime("%H:%M%P")
+          .panel-footer  
+            = link_to("View Itinerary ##{itinerary.id}", new_itinerary_visit_path(itinerary), class: "btn btn-info")
+            = link_to("Remove Itinerary ##{itinerary.id}", itinerary_path(itinerary), method: :delete, class: "btn btn-warning")
+
+    %hr
+
+
+
+

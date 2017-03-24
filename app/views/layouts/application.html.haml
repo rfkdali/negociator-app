@@ -1,13 +1,22 @@
 !!!
 %html
   %head
-    %title NegociatorTt
+    %title Negociator itineraries
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .navbar.navbar-default.navbar-static-top
+      .container
+        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        / %a.navbar-brand(href="#") Negociator itineraries
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Home", root_path
+
     .container
-      - if !flash[:notice].blank?
-        .alert.alert-info
-          = flash[:notice]
+      = render 'layouts/messages'
       = yield

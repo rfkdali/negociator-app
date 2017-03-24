@@ -1,36 +1,30 @@
-%h3 
-  Itinerary: 
-  = @itinerary.id
-%b Start time:
-= @itinerary.start_time
-%b from:
-Barbican office
+%h3= "New visit for itinerary ##{@itinerary.id}"
 
-%hr
+%b Start time: 
+= @itinerary.start_time.strftime("%H:%M%P")
 
-- @visits.each do |visit|
-  .panel-group
-    .panel.panel-primary
-      .panel-heading
-        Visit #
-        = visit.id
-      .panel-body
-        %b
-          Address:
-        = visit.address
-        %b
-          Duration (in minutes):
-        = visit.duration
-        %b
-          Arrival time:
-        = visit.arrival_time
-      .panel-footer
-        %b
-          =link_to "Edit", edit_itinerary_visit_path(@itinerary, visit), class: "btn btn-info"
-        %b
-          =link_to "Remove", itinerary_visit_path(@itinerary, visit), method: :delete, class: "btn btn-primary"
 
-%hr
+-unless @visits.empty?
+  %b Last visited address:
+  = @itinerary.last_visit_address
+
+
+- if @visits
+  %hr
+  - @visits.each do |visit|
+    .panel-group
+      .panel.panel-default
+        .panel-heading
+          = "Visit ##{visit.id}"
+        .panel-body
+          %b Address:
+          = visit.address
+          %b Duration of the visit:
+          = "#{visit.duration} minutes"
+          %b Travel Time:
+          = "#{visit.travel_time} minutes"
+          %b Arrival Time:
+          = visit.arrival_time.strftime("%H:%M%P")
 
 .panel-group
   .panel.panel-primary
